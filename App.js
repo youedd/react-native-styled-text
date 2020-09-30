@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Alert, Platform, StyleSheet, Text, View} from 'react-native';
 
 import StyledText from './lib';
 
@@ -26,8 +26,15 @@ export default class App extends Component<Props> {
         <StyledText 
           style={styles.welcome}
           textStyles={textStyles}
+          textProps={{
+            link: {
+              onPress: () => {
+                Alert.alert("Welcome");
+              },
+            },
+          }}
         >
-          {"Welcome to <b>React <u>Native</u> <demo><i>Styled</i> Text</demo></b> demo!"}
+          {"<link>Welcome</link> to <b>React <u>Native</u> <demo><i>Styled</i> Text</demo></b> demo!"}
         </StyledText>
         <StyledText 
           style={styles.instruction}
@@ -120,6 +127,9 @@ const styles = StyleSheet.create({
 });
 
 const textStyles = StyleSheet.create({
+  link: {
+    color: 'blue',
+  },
   demo: {
     textShadowOffset: { width: 2, height: 2 },
     textShadowColor: '#555555',
